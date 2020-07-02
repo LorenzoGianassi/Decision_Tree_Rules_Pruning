@@ -4,9 +4,7 @@ import DataSet
 
 
 def dt_learner(dataset):
-
-    # funzione che classifica se un esempio ha un valore dell'attribute maggiore o minore  della treshold
-    # calcolata al relativo attribute che gli viene passata
+    # funzione che che divide gli esampi del dataset a seconda di un valore che può assumere l'attributo
     def treshold_classifier(examples, attribute, value):
         exs_val = []
         exs_non_val = []
@@ -34,8 +32,8 @@ def dt_learner(dataset):
         result = list(attributes)
         result.remove(delAttr)
         return result
-
-    def information_gain1( attribute, examples):
+    # funzioni che mi calcolano il guadagno di informazione
+    def information_gain1(attribute, examples):
         entr = entropy(examples)
         gain = 0
         threshold = 0
@@ -50,11 +48,11 @@ def dt_learner(dataset):
     def information_gain2(attribute, examples):
         entr = entropy(examples)
         rem = remainder2(attribute, examples)
-        gain = entr - rem  # Gain(Decision, X) = Entropy(Decision) – ∑ [ p(Decision|X) * Entropy(Decision|X) ]
+        gain = entr - rem
         val = DataSet.values(attribute, dataset.examples)
         return gain, val
-
-    def remainder(attribute, value, examples):  # calcola il valore ∑ [ p(Decision|X) * Entropy(Decision|X) ]
+    # funzioni che mi calcolano il remainder cioè l'entropia dato l'asegnmento di un valore all'attributo
+    def remainder(attribute, value, examples):
         tot = float(len(examples))
         over_treshold, under_treshold = treshold_classifier(examples, attribute, value)
         remainder_over = (float(len(over_treshold)) / tot) * entropy(over_treshold)
@@ -98,7 +96,7 @@ def dt_learner(dataset):
                 return False
         return True
 
-    # trova il piu importante attributo e suo trehshold in accordo all'information gain
+    # trova il più importante attributo e suo trehshold in accordo all'information gain
     def importance_attr(attributes, examples):
         global mostImportanceAttr
         maxgainAttr = 0
