@@ -5,7 +5,7 @@ Elaborato per l'esame di Intelligena Artificiale
 - Nel file Main.py eseguiremo più test per avere dei risultati omogenei, inoltre sarà necessario cambiare il nome del file (nel caso in cui si volesse cambiare dataset) e i valori realtivi alle classi che nel ostro caso saranno '<=50K', '>50K'. 
 - Può essere inoltre modificato il numero di Test eseguibili, di default sono 3.
 
-I tempi di esecuzione possono variare a seconda della dimensione del dataset e  dal numero di test svolti, nel mio caso per ciascuna iterazione impiega circa 10 minuti (l'operazione più lunga si tratta proprio del pruning).
+I tempi di esecuzione possono variare a seconda della dimensione del dataset e  dal numero di test svolti, nel mio caso per ciascuna iterazione impiega circa 10 minuti (l'operazione è quella che richiede maggior parte del tempo).
 
 Per la realizzaione di questo progetto ho consultato le seguenti fonti:
 - Una repository pubblica riadattata al mio problema : https://github.com/aimacode/aima-python/blob/master/learning.py
