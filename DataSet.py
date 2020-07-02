@@ -20,7 +20,6 @@ def parse(file, values):
 
     # trovo tutti i valori missing e elimino le rispettive righe
     col_names = data.columns
-    # print(col_names)
 
     data = data[data['workclass'] != '?']
     data = data[data['occupation'] != '?']
@@ -88,6 +87,6 @@ def splitting(dataset):
 def values(attribute, examples):
     val = []
     for i in examples:
-        if not i[attribute] in values:
+        if not i[attribute] in val:
             val.append(i[attribute])
     return val
