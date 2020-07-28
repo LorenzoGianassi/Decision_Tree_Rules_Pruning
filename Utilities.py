@@ -16,7 +16,6 @@ def rule_accuracy(rule, dataset):
                     verified = False
                     break
             else:
-                # print(r[0])
                 if e[r[0]] == r[1]:
                     verified = True
                 else:
@@ -40,6 +39,10 @@ def allrule_accuracy(rules, dataset):
             corr.append(c)
     exs_correct = len(corr) / len(dataset.examples)
     percent = (len(corr) * 100) / len(dataset.examples)
+    """""
+    print(percent, '% classificate correttamente, ovvero', len(corr),
+           'classificazioni corrette su', len(dataset.examples))
+    """
     return percent, exs_correct
 
 
