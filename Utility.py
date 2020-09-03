@@ -12,7 +12,6 @@ def predict_example(example, tree):
     for i in range(0, length):
         question = list(tree.keys())[i]
         feature_name, comparison_operator, value = question.split(" ")
-        # ask question
         if comparison_operator == "<=":
             if example[feature_name] <= float(value):
                 answer = tree[question]
@@ -23,19 +22,15 @@ def predict_example(example, tree):
                 answer = tree[question]
                 ans_none = True
 
-        # feature is categorical
+        # Categorico
         else:
             if str(example[feature_name]) == value:
                 ans_none = True
-                answer = tree[
-                    question]  # qui dovrai restituire i valori specifici per il value cioè in posizione value.index()
-            # pprint(answer)
+                answer = tree[question]
 
     if not ans_none:
-        # answer = tree[list(tree.keys())[random.randint(0,length-1)]]
         answer = np.nan
     if not isinstance(answer, dict):
-
         return answer
     else:
         residual_tree = answer
@@ -63,7 +58,6 @@ def calculate_accuracy(df, tree):
 
 
 # NUOVO METODO DEL CALCOLO DELLE RULE
-# VERSIONE VELOCE
 def predict_rule(df, rule):
     df_tmp = df
     label = rule[len(rule) - 1]
@@ -83,6 +77,7 @@ def predict_rule(df, rule):
     return index
 
 
+# METODO PER CALCOLARE ACCURACY PER TUTTE LE RULES
 def make_predictions_rule(df, rules):
     total_index = None
     df_tmp = copy.deepcopy(df)
@@ -96,3 +91,10 @@ def make_predictions_rule(df, rules):
     accuracy = (len(total_index)) / df.shape[0]
     return accuracy
 
+
+# METODO PER CALCOLARE IL NUMERO DI LETTERALI
+def number_of_literals(rules):
+    count = 0
+    for r in rules:
+        count += len(r)
+    print('Numero di letterali: ', count)

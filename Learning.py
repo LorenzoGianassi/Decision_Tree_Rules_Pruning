@@ -1,10 +1,5 @@
 import numpy as np
-import pandas as pd
 import copy
-import matplotlib.pyplot as plt
-
-import random
-from pprint import pprint
 
 
 # METODO CHE RITORNA TRUE O FALSE SE TUTTI GLI ESEMPI DEL DATAFRAME HANNO LA STESSA CLASSE
@@ -96,7 +91,6 @@ def calculate_overall_entropy_continous(data_below, data_above):  # questo sareb
 def calculate_overall_entropy_categorical(data_below, data_above):  # questo sarebbe il mio reminder
     n = len(data_below) + len(data_above)
     p_data_below = len(data_below) / n  # probabilià di dato valido
-    p_data_above = len(data_above) / n  # probabilià dato non valido
     # essendo categorico utilizzo solo quello below cioè uguale a valore che assume l'attributo nel sottoalbero
     # non è infatti uno split binario, splitta su ogni valore che può assumere
     overall_entropy = (p_data_below * calculate_entropy(data_below))
@@ -140,7 +134,6 @@ def determine_best_split(data, values_per_attributes, attributes_value):
                 overall_entropy = info_gain
                 best_split_column = column_index
                 best_split_value = np.mean(values_per_attributes[column_index])
-                # print(info_gain)
     return best_split_column, best_split_value
 
     ##############################################################################################################
@@ -148,7 +141,10 @@ def determine_best_split(data, values_per_attributes, attributes_value):
 
 # ALGORITMO DI APPRENDIMENTO DELL'ALBERO
 def decision_tree_algorithm(df, attributes_value=None, counter=0, min_samples=2, max_depth=5):
-    # data preparations
+    # preparazione dati
+    # tutti i metodi helper lavorano con numpy e restituiscono numpy.array
+    # qundi alla prima iterazione passo df e verrà trasformato in numpy.array
+    # alle chimate successive abbiamo un array di numpy come df
     if counter == 0:
         global COLUMN_HEADERS, FEATURE_TYPES
         COLUMN_HEADERS = df.columns
@@ -166,6 +162,7 @@ def decision_tree_algorithm(df, attributes_value=None, counter=0, min_samples=2,
         counter += 1
         potential_splits = get_values_per_attributes(data)
         # tutti i valori da splittare e si differenziano in categorici o continui
+        # nel caso di attributo categorico split_value non lo userò
         split_column, split_value = determine_best_split(data, potential_splits, attributes_value)
         # passo tutti i valori che può assumere i miei attributi e df.values
         if split_column is None or split_value is None:
@@ -198,6 +195,7 @@ def decision_tree_algorithm(df, attributes_value=None, counter=0, min_samples=2,
                 questions = []
                 question = "{} = {}".format(feature_name, value)
                 questions.append(question)
+                # uso il value nel ciclo for
                 data_below, _ = split_data(data, split_column, value)
                 if len(data_below) == 0:
                     classification = classify_data(data)

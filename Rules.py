@@ -1,5 +1,3 @@
-
-
 # FUNZIONE CHE RITORNA TUTTI I CAMMINI DALLA RADICE ALLE FOGLIE ==> RULES
 def all_rules(tr):
     rules = []
@@ -18,7 +16,8 @@ def find_rules(tr, path, paths, pathLen, append, value=None):
             path.append(value)
 
         pathLen = pathLen + 1
-        if not isinstance(tr,dict):
+        if not isinstance(tr, dict):
+            # trovata la foglia
             path.append(tr)
             pathLen = pathLen + 1
             path_rule = save_rule(path, pathLen)
