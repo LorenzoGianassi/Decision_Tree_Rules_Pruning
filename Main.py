@@ -3,10 +3,9 @@ from DataSet import *
 from Learning import *
 from Pruning import *
 import matplotlib.pyplot as plt
+import pprint
 
-# CREAZIONE DI TRAIN-SET, VALIDATION-SET E TEST-SET
-df = create_dataframe()
-dim_df = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000]
+
 
 # METODO CHE FA IL PLOT DELLE PRECISIONI DELLE VARIE DEPTH DELL'ALBERO
 def plot_depth():
@@ -86,6 +85,8 @@ def pruning_table():
     plt.savefig("./pruning.png", dpi=72)
 
     ################################################################################################################
+df = create_dataframe()
+dim_df = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000]
 indices = df.index.tolist()
 test_indices = random.sample(population=indices, k=8000)
 new_df = df.loc[test_indices]
@@ -97,6 +98,7 @@ rules = all_rules(tree)
 print(len(rules), 'numero di regole')
 rules = np.array(rules, dtype=object)
 number_of_literals(rules)
+
 # richiamo i metodi di plot
 plot_depth()
 plot_dim(dim_df)
