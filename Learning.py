@@ -27,7 +27,7 @@ def get_values_per_attributes(data):  # per ogni attributo ritorna la lista di v
 
     potential_splits = {}
     _, n_columns = data.shape
-    for column_index in range(n_columns - 1):  # excluding the last column which is the label
+    for column_index in range(n_columns - 1):  # si esclude l'ultima colonna che è la label
         values = data[:, column_index]
         unique_values = np.unique(values)
         potential_splits[column_index] = unique_values
@@ -77,7 +77,7 @@ def calculate_entropy(data):
 
 
 # CALCOLA ENTROPIA DI UN ATTRIBUTO  CONTINUO
-def calculate_overall_entropy_continous(data_below, data_above):  # questo sarebbe il mio reminder
+def calculate_overall_entropy_continous(data_below, data_above):
     n = len(data_below) + len(data_above)
     p_data_below = len(data_below) / n  # probabilià di dato valido
     p_data_above = len(data_above) / n  # probabilià dato non valido
@@ -88,7 +88,7 @@ def calculate_overall_entropy_continous(data_below, data_above):  # questo sareb
 
 
 # METODO CHE CALCOLA ENTROPIA DI UN ATTIBUTO CATEGORICO
-def calculate_overall_entropy_categorical(data_below, data_above):  # questo sarebbe il mio reminder
+def calculate_overall_entropy_categorical(data_below, data_above):
     n = len(data_below) + len(data_above)
     p_data_below = len(data_below) / n  # probabilià di dato valido
     # essendo categorico utilizzo solo quello below cioè uguale a valore che assume l'attributo nel sottoalbero
@@ -101,7 +101,6 @@ def calculate_overall_entropy_categorical(data_below, data_above):  # questo sar
 def determine_best_split(data, values_per_attributes, attributes_value):
     data_entropy = calculate_entropy(data)  # entropia di tutto il sistema
     overall_entropy = 0  # entropia iniziale
-    # current_overall_entropy = 0
     types = FEATURE_TYPES
     for column_index in attributes_value:
         if COLUMN_HEADERS[column_index] != 'fnlwgt':
@@ -170,7 +169,6 @@ def decision_tree_algorithm(df, attributes_value=None, counter=0, min_samples=2,
             return classification
 
         feature_name = COLUMN_HEADERS[split_column]
-        # CREO UNA COPIA PER IL SOTTOALBERO, ALTRIMENTI CON LA RICORSIONE SI SAFREBBE ANDATI INCONTRO AUN ALBERO SBILANCIATO
         type_of_feature = FEATURE_TYPES[split_column]
         tmp_attributes_value = copy.deepcopy(attributes_value)
         del tmp_attributes_value[split_column]

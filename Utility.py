@@ -70,7 +70,7 @@ def predict_rule(df, rule):
             df_tmp = df_tmp[df_tmp[feature_name] <= float(value)]
         if comparison_operator == ">":
             df_tmp = df_tmp[df_tmp[feature_name] > float(value)]
-            # feature is categorical
+            # attributo categorico
         if comparison_operator == "=":
             df_tmp = df_tmp[df_tmp[feature_name] == str(value)]
     index = df_tmp.index
@@ -82,11 +82,12 @@ def make_predictions_rule(df, rules):
     total_index = None
     df_tmp = copy.deepcopy(df)
     for i in range(0, len(rules)):
-        index = predict_rule(df_tmp, rules[i])  # potrei concatenare e poi droppare tutto insieme
+        index = predict_rule(df_tmp, rules[i])
         if total_index is not None:
             total_index = np.concatenate((total_index, index), axis=0)
         else:
             total_index = index
+    # utilizzo gli indici, velocizzando l'operazione
     total_index = np.unique(total_index)
     accuracy = (len(total_index)) / df.shape[0]
     return accuracy
