@@ -55,7 +55,7 @@ def determine_type_of_attribute(df):
     feature_types = []
     n_unique_values_treshold = 2
     for feature in df.columns:
-        if feature != "label":
+        if feature != "income":
             unique_values = df[feature].unique()
             example_value = unique_values[0]
             if (isinstance(example_value, str)) or (len(unique_values) <= n_unique_values_treshold):
