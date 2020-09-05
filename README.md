@@ -7,6 +7,6 @@ Elaborato per l'esame di Intelligena Artificiale
 I tempi di esecuzione possono variare a seconda della dimensione del dataset e dalla profondità dell'albero(l'operazione di pruning è quella che richiede maggior parte del tempo).
 
 Per la realizzazione di questo progetto ho consultato le seguenti fonti:
-- Una repository pubblica riadattata al mio problema : https://github.com/aimacode/aima-python/blob/master/learning.py
+- Due repository pubblicche riadattate al mio problema : https://github.com/aimacode/aima-python/blob/master/learning.py , https://github.com/SebastianMantey/Decision-Tree-from-Scratch/tree/master/notebooks
 - Il paragrafo del libro fornito dalla richiesta del problema : 'Machine Learning',Tom M. Mitchell(1997), McGraw-Hill
 - Libro di testo : 'Artificial Intelligence: A Modern Approach', di Stuart J. Russell and Peter Norvig
