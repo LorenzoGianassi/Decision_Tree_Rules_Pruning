@@ -37,5 +37,5 @@ For the realization of this project I have consulted the following sources:
 # Authors
 - **Lorenzo Gianassi**
 # Acknowledgments
-Parallel Computing Project © Course held by Professor [Marco Bertini](https://www.unifi.it/p-doc2-2019-0-A-2b333d2d3529-1.html) - Computer Engineering Master Degree @[University of Florence](https://www.unifi.it/changelang-eng.html)
+Artificial Intelligence Project © Course held by Professor [Paolo Frasconi](https://www.unifi.it/p-doc2-2016-200006-F-3f2a3d2f332b2c-0.html) - Computer Engineering Degree @[University of Florence](https://www.unifi.it/changelang-eng.html)
 
